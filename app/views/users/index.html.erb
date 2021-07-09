@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Users</h1>
+
+
+<%= form_with url: search_users_path, data: { controller: "search" } do |form| %>
+ <%= form.text_field 'search_term', placeholder: 'Enter search terms...', data: { "search-target" => "term" } %>
+ <%= form.submit 'Search', data: { disable_with: false, action: "click->search#addQueryString" } %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <%= render partial: "users/listing" %>
+</table>
+
+<br>
+
+<%= link_to 'New User', new_user_path %>
